@@ -1,6 +1,8 @@
 class Config:
     SECRET_KEY = '#GgNP$4Ckz@g'
     FLASK_APP = 'app:wsgi.py'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+
 
 class Prod(Config):
     MYSQL_DATABASE_HOST = '108.167.188.38'

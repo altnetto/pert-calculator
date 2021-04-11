@@ -9,10 +9,12 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object('app.config.Dev')
 
-    db.init_app(app)
+    with app.app_context():
 
-    from app.routes.index import index as index_bp
+        db.init_app(app)
 
-    app.register_blueprint(index_bp)
+        from app.routes.index import index as index_bp
 
-    return app
+        app.register_blueprint(index_bp)
+
+        return app
