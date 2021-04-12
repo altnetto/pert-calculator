@@ -1,0 +1,12 @@
+{% macro task_row(task) %}
+
+    <tr>
+        <th scope='row'>{{ task.name }}</th>
+        <td>{{ task.critical }}</td>
+        <td>{{ task.optmist }}</td>
+        <td>{{ task.most_probable }}</td>
+        <td>{{ task.pessimist }}</td>
+        <td>{{ task.expected_time }}</td>
+    </tr>
+
+{% endmacro %}

@@ -1,10 +1,39 @@
 {% extends 'base.html' %}
 
+{% from 'macros/task.html' import task_row with context %}
+
 {% block content %}
 
 <div class="container text-center">
     <h3 class='my-4'>Welcome to the PERT Calculator</h3>
     {% include 'components/scheduled_table.html' %}
+    {% include 'components/new_task.html' %}
 </div>
+
+    {% if tasks %}
+        
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th scope='col'>Task</th>
+                        <th scope='col'>Critical</th>
+                        <th scope='col'>Optimist</th>
+                        <th scope='col'>Most Probable</th>
+                        <th scope='col'>Pessimist</th>
+                        <th scope='col'>Expected Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for task in tasks %}
+
+                            {{ task_row(task) }}
+                        
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+
+    {% endif %}
 
 {% endblock %}

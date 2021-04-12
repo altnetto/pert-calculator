@@ -1,0 +1,34 @@
+<div class='container'>
+
+    <form action="{{ url_for('index.add_task') }}" method="post">
+        <div class="form-row d-flex justify-content-evenly mt-3 align-items-center">
+            <div class='col-2'>
+                <input placeholder="Activity" class="form-control" type="text" name='activity' required>
+            </div>
+            <div class='col-2'>
+                <input placeholder="Optmist" class="form-control" type="number" name='optmist' required>
+            </div>
+            <div class='col-2'>
+                <input placeholder="Most Probable" class="form-control" type="number" name='most-probable' required>
+            </div>
+            <div class='col-2'>
+                <input placeholder="Pessimist" class="form-control" type="number" name='pessimist' required>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="critical">
+                <label class="form-check-label" for="critical">
+                  Critical Task
+                </label>
+            </div>
+            <button class="btn btn-primary" type="submit">
+                <div class = "d-flex align-items-center">
+                    <i class="fas fa-plus me-2"></i>
+                    <span class="align-self-center">Add Task</span>  
+                </div>
+            </button>
+        </div>
+
+
+    </form>
+
+</div>
