@@ -6,10 +6,10 @@
 
 <div class="container text-center">
     <h3 class='my-4'>Welcome to the PERT Calculator</h3>
-    {% include 'components/scheduled_table.html' %}
-    {% include 'components/new_task.html' %}
 </div>
 
+{% include 'components/scheduled_table.html' %}
+{% include 'components/new_task.html' %}
     {% if tasks %}
         <div class='container'>
             <table class='table'>
@@ -21,6 +21,8 @@
                         <th scope='col'>Most Probable</th>
                         <th scope='col'>Pessimist</th>
                         <th scope='col'>Expected Time</th>
+                        <th scope='col'>Edit Task</th>
+                        <th scope='col'>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +30,7 @@
                         {% for task in tasks %}
 
                             {{ task_row(task) }}
-                        
+
                         {% endfor %}
                     </tr>
                 </tbody>

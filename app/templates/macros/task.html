@@ -1,5 +1,48 @@
 {% macro task_row(task) %}
 
+{% if task.editing %}
+
+<tr class='text-center'>
+    <form action="{{ url_for('index.update', id=task.id) }}" id="form{{ task.id }}" method="post">
+        <div class="d-flex align-items-center">
+            <th scope='row'>
+                <input value="{{ task.name }}" class="form-control" type="text" name='activity' required>
+            </th>
+            <td>
+                <div class="form-check d-inline-flex justify-content-center align-items-center">
+                    {% if task.critical %}
+                        <input class="form-check-input" type="checkbox" name="critical" checked>
+                    {% else %}
+                        <input class="form-check-input" type="checkbox" name="critical">
+                    {% endif %}
+                </div>
+            </td>
+            <td>
+                <input value="{{ task.optmist }}" class="form-control" type="number" name='optmist' required>
+            </td>
+            <td>
+                <input value="{{ task.most_probable }}" class="form-control" type="number" name='most-probable' required>
+            </td>
+            <td>
+                <input value="{{ task.pessimist }}" class="form-control" type="number" name='pessimist' required>
+            </td>
+            <td>{{ task.expected_time }}</td>
+            <td>
+                <button class="btn btn-primary" type="submit" form="form{{task.id}}">
+                    <i class="fas fa-check"></i>
+                </button>
+            </td>
+            <td>
+                <a class="btn btn-danger" href="{{ url_for('index.update', id=task.id) }}">
+                    <i class="fas fa-times"></i>
+                </a>
+            </td>
+        </div>
+    </form>
+</tr>
+
+{% else %}
+
     <tr class='text-center'>
         <th scope='row'>{{ task.name }}</th>
         <td>{{ task.critical }}</td>
@@ -7,6 +50,18 @@
         <td>{{ task.most_probable }}</td>
         <td>{{ task.pessimist }}</td>
         <td>{{ task.expected_time }}</td>
+        <td>
+            <a href="{{ url_for('index.update', id=task.id) }}">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{{ url_for('index.delete', id=task.id) }}">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </td>
     </tr>
+
+{% endif %}
 
 {% endmacro %}
