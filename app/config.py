@@ -2,15 +2,11 @@ class Config:
     SECRET_KEY = '#GgNP$4Ckz@g'
     FLASK_APP = 'app:wsgi.py'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-
+    SESSION_COOKIE_NAME = 'pert-calculator-cookies'
+    PERMANENT_SESSION_LIFETIME = 300
 
 class Prod(Config):
-    MYSQL_DATABASE_HOST = '108.167.188.38'
-    # MYSQL_DATABASE_PORT = '0000'
-    MYSQL_DATABASE_USER = 'pertca52_admin'
-    MYSQL_DATABASE_PASSWORD = "&B]!(eK+?rvZ"
-    MYSQL_DATABASE_DB = "pertca52_data"
-
+    pass
 
 class Dev(Config):
     FLASK_ENV = 'development'
