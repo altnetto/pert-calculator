@@ -13,7 +13,6 @@ class TaskModel(db.Model):
     standard_deviation = db.Column(db.String(10), nullable = False)
     variance = db.Column(db.String(10), nullable = False)
     editing = db.Column(db.Boolean, nullable = False, default = False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
     
 
     def __init__(self, name, critical, optmist, most_probable, pessimist):
